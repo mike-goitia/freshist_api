@@ -1,0 +1,26 @@
+{
+  "name": "freshistfood",
+  "version": "1.0.0",
+  "description": "Freshist Food App",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micsarmi01/FreshistFood_API.git"
+  },
+  "author": "Michael Francis Goitia Sarmiento",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/micsarmi01/FreshistFood_API/issues"
+  },
+  "homepage": "https://github.com/micsarmi01/FreshistFood_API#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.3"
+  }
+}
