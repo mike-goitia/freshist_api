@@ -1,6 +1,6 @@
 var express = require('express'),
   app = express(),
-  port = process.env.PORT || 3000,
+  port = process.env.PORT || 3001,
   mongoose = require('mongoose'),
   Dish = require('./api/models/dishModel.js'), //created model loading here
   bodyParser = require('body-parser');
