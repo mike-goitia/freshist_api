@@ -30,6 +30,9 @@ var Dish = new Schema({
   down_votes: {
     type: Number,
   },
+  image_url: {
+    type: String,
+  }
 });
 
 module.exports = mongoose.model('Dish', Dish);
