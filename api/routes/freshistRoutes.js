@@ -11,6 +11,7 @@ module.exports = function(app) {
   app.post('/get_dish', dishes.get_dish)
   app.post('/up_vote',dishes.up_vote_dish)
   app.post('/down_vote',dishes.down_vote_dish)
+  app.post('/favorite_dish',dishes.favorite)
 
   // Dishes Routes
   // app.route('/create_dish')
