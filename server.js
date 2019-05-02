@@ -36,7 +36,8 @@ app.post('/upload', upload.array('upl',1), function (req, res, next) {
 
 // // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://freshist-api:JkVz9R2z7K7KjSw@ds151076.mlab.com:51076/heroku_frh79hj3'||'mongodb://localhost/freshist');
+mongoose.connect('mongodb://freshist-api:JkVz9R2z7K7KjSw@ds151076.mlab.com:51076/heroku_frh79hj3');
+console.log('connection mongoose == ' + mongoose.connection.readyState)
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
