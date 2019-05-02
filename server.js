@@ -34,9 +34,9 @@ app.post('/upload', upload.array('upl',1), function (req, res, next) {
     res.send("Uploaded!");
 });
 
-// // // mongoose instance connection url connection
-// mongoose.Promise = global.Promise;
-// mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/freshist');
+// // mongoose instance connection url connection
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI||'mongodb://localhost/freshist');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
