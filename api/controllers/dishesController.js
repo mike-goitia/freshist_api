@@ -40,14 +40,14 @@ exports.create_dish = function(req, res) {
   console.log(req.body)
   req.body['image_url'] = "RandomString.jpg"
   console.log(req.body)
-  // req.body.push(image_url)
-  // console.log(req.body)
-  // var new_dish = new Dish(req.body);
-  // new_dish.save(function(err, dish) {
-  //   if (err)
-  //     res.send(err);
-  //   res.json(dish);
-  // });
+  req.body.push(image_url)
+  console.log(req.body)
+  var new_dish = new Dish(req.body);
+  new_dish.save(function(err, dish) {
+    if (err)
+      res.send(err);
+    res.json(dish);
+  });
   res.json('done')
 };
 
