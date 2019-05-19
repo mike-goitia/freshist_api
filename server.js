@@ -36,7 +36,7 @@ app.listen(port);
 
 console.log('Freshist Engaged!' + port);
 
-const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
+// const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 
 
 // var upload = multer({
