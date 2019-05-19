@@ -12,32 +12,19 @@ var express = require('express'),
 var app = express(),
   s3 = new aws.S3();
 
-
-var upload = multer({
-    storage: multerS3({
-        s3: s3,
-        bucket: 'freshist-food',
-        key: function (req, file, cb) {
-            console.log(file);
-            cb(null, randomstring.generate(25) + '.' + mime.getExtension(file.mimetype));
-        }
-    })
-});
-
-//open in browser to see upload form
-app.get('/upload', function (req, res) {
-    res.sendFile(__dirname + '/upload_form.html');
-});
-
-//used by upload form
-app.post('/upload', upload.array('upl',1), function (req, res, next) {
-    res.send("Uploaded!");
-});
-
 // // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://freshist-api:JkVz9R2z7K7KjSw@ds151076.mlab.com:51076/heroku_frh79hj3');
-console.log('connection mongoose == ' + mongoose.connection.readyState)
+
+// DB Config
+const db = require("./config/keys").mongoURI;
+// Connect to MongoDB
+mongoose
+  .connect(
+    db,
+    { useNewUrlParser: true }
+  )
+  .then(() => console.log("MongoDB successfully connected"))
+  .catch(err => console.log(err));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -48,3 +35,27 @@ routes(app); //register the route
 app.listen(port);
 
 console.log('Freshist Engaged!' + port);
+
+const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
+
+
+// var upload = multer({
+//     storage: multerS3({
+//         s3: s3,
+//         bucket: 'freshist-food',
+//         key: function (req, file, cb) {
+//             console.log(file);
+//             cb(null, randomstring.generate(25) + '.' + mime.getExtension(file.mimetype));
+//         }
+//     })
+// });
+
+// //open in browser to see upload form
+// app.get('/upload', function (req, res) {
+//     res.sendFile(__dirname + '/upload_form.html');
+// });
+
+// //used by upload form
+// app.post('/upload', upload.array('upl',1), function (req, res, next) {
+//     res.send("Uploaded!");
+// });
