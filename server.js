@@ -9,8 +9,13 @@ var express = require('express'),
   randomstring = require('randomstring'),
   mime = require('mime');
 
+require('dotenv').config()
+
 var app = express(),
   s3 = new aws.S3();
+
+
+
 
 // // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
@@ -35,6 +40,7 @@ routes(app); //register the route
 app.listen(port);
 
 console.log('Freshist Engaged!' + port);
+
 
 // const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
 
