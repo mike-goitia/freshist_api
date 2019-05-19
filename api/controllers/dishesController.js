@@ -16,7 +16,6 @@ var mongoose = require('mongoose'),
 //     })
 // });
 
-
 exports.list_all_dishes = function(req, res) {
   Dish.find({}, function(err, dishes) {
     if (err)
@@ -34,7 +33,6 @@ exports.get_dish = function(req, res) {
 };
 
 exports.create_dish = function(req, res) {
-
   console.log('TESTING')
   console.log(typeof req.body)
   console.log(req.body)
@@ -48,7 +46,6 @@ exports.create_dish = function(req, res) {
       res.send(err);
     res.json(dish);
   });
-  res.json('done')
 };
 
 exports.up_vote_dish = function(req, res) {

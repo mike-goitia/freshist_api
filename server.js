@@ -1,7 +1,8 @@
 var express = require('express'),
   port = process.env.PORT || 8081,
   mongoose = require('mongoose'),
-  Dish = require('./api/models/dishModel.js'), //created model loading here
+  Dish = require('./api/models/dishModel.js'),
+  User = require('./api/models/userModel.js'), //created model loading here
   bodyParser = require('body-parser'),
   aws = require('aws-sdk'),
   multer = require('multer'),
