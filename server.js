@@ -14,9 +14,6 @@ require('dotenv').config()
 var app = express(),
   s3 = new aws.S3();
 
-
-
-
 // // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 
