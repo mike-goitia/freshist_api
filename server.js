@@ -1,25 +1,31 @@
 var express = require('express'),
-  port = process.env.PORT || 8081,
+  port = process.env.PORT || 3001,
   mongoose = require('mongoose'),
   Dish = require('./api/models/dishModel.js'),
-  User = require('./api/models/userModel.js'), //created model loading here
+  User = require('./api/models/userModel.js'),
   bodyParser = require('body-parser'),
   aws = require('aws-sdk'),
   multer = require('multer'),
   multerS3 = require('multer-s3'),
   randomstring = require('randomstring'),
-  mime = require('mime');
+  mime = require('mime'),
+  jwt = require("express-jwt"),
+  jwksRsa = require("jwks-rsa");
+  cors = require('cors')
 
 require('dotenv').config()
 
 var app = express(),
   s3 = new aws.S3();
 
+app.use(cors())
+
 // // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 
 // DB Config
 const db = require("./config/keys").mongoURI;
+
 // Connect to MongoDB
 mongoose
   .connect(
@@ -33,7 +39,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var routes = require('./api/routes/freshistRoutes'); //importing routes
-routes(app); //register the route
+routes(app); //register the routes
 
 app.listen(port);
 
