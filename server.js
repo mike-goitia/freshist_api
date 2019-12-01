@@ -44,28 +44,3 @@ routes(app); //register the routes
 app.listen(port);
 
 console.log('Freshist Engaged!' + port);
-
-
-// const port = process.env.PORT || 5000; // process.env.port is Heroku's port if you choose to deploy the app there
-
-
-// var upload = multer({
-//     storage: multerS3({
-//         s3: s3,
-//         bucket: 'freshist-food',
-//         key: function (req, file, cb) {
-//             console.log(file);
-//             cb(null, randomstring.generate(25) + '.' + mime.getExtension(file.mimetype));
-//         }
-//     })
-// });
-
-// //open in browser to see upload form
-// app.get('/upload', function (req, res) {
-//     res.sendFile(__dirname + '/upload_form.html');
-// });
-
-// //used by upload form
-// app.post('/upload', upload.array('upl',1), function (req, res, next) {
-//     res.send("Uploaded!");
-// });

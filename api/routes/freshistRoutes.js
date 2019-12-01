@@ -25,7 +25,7 @@ module.exports = function(app) {
 
   app.get("/api/external", checkJwt, (req, res) => {
     res.send({
-      msg: Date.now() + " Your Shit is Legit!!"
+      msg: Date.now() + " Your token is valid."
     });
   });
 
@@ -34,15 +34,4 @@ module.exports = function(app) {
   app.post('/get_dish', dishes.get_dish)
   app.post('/up_vote',dishes.up_vote_dish)
   app.post('/down_vote',dishes.down_vote_dish)
-
-  // app.post('/favorite_dish',dishes.favorite)
-  // Dishes Routes
-  // app.route('/create_dish')
-  //   .post(dishes.create_dish);
-  // app.route('/upvote')
-  //   .post(dishes.upvote_dish);
-  // app.route('/tasks/:taskId')
-  //   .get(todoList.read_a_task)
-  //   .put(todoList.update_a_task)
-  //   .delete(todoList.delete_a_task);
 };

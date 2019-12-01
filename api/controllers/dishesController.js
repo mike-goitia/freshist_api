@@ -3,19 +3,6 @@
 var mongoose = require('mongoose'),
   Dish = mongoose.model('Dish');
 
-// s3 = new aws.S3();
-//
-// var upload = multer({
-//     storage: multerS3({
-//         s3: s3,
-//         bucket: 'freshist-food',
-//         key: function (req, file, cb) {
-//             console.log(file);
-//             cb(null, randomstring.generate(25) + '.' + mime.getExtension(file.mimetype));
-//         }
-//     })
-// });
-
 exports.list_all_dishes = function(req, res) {
   Dish.find({}, function(err, dishes) {
     if (err)
