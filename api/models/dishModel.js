@@ -14,7 +14,7 @@ var Dish = new Schema({
   dish_type:{
     type: String,
   },
-  location: {
+  location_id: {
     type: String,
     required: 'Missing Location ID'
   },

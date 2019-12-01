@@ -10,8 +10,23 @@ var express = require('express'),
   randomstring = require('randomstring'),
   mime = require('mime'),
   jwt = require("express-jwt"),
-  jwksRsa = require("jwks-rsa");
-  cors = require('cors')
+  jwksRsa = require("jwks-rsa"),
+  cors = require('cors'),
+  graphqlHTTP = require('express-graphql'),
+  { buildSchema } = require('graphql');
+
+// Construct a schema, using GraphQL schema language
+var schema = buildSchema(`
+  type Query {
+    hello: String
+  }
+`);
+
+var root = {
+  hello: () => {
+    return 'Hello world!';
+  },
+};
 
 require('dotenv').config()
 
@@ -37,6 +52,12 @@ mongoose
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use('/graphql', graphqlHTTP({
+  schema: schema,
+  rootValue: root,
+  graphiql: true,
+}));
 
 var routes = require('./api/routes/freshistRoutes'); //importing routes
 routes(app); //register the routes
