@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
   Dish = mongoose.model('Dish');
 
 exports.list_all_dishes = function(req, res) {
+  console.log('list all dishes')
   Dish.find({}, function(err, dishes) {
     if (err)
       res.send(err);
